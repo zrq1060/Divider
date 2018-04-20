@@ -1,12 +1,12 @@
 # Divider
 ## RecyclerView通用分割线 
 # 使用说明：
-##Demo
+## Demo
 [下载 APK-Demo](https://github.com/zrq1060/Divider/blob/master/res/app-debug.apk)
-##效果：
+## 效果：
 [image](https://github.com/zrq1060/Divider/blob/master/res/0.png)
 
-##导入
+## 导入
 ### Android studio 
 ```
 implementation 'com.zrq:divider:1.0.0'
@@ -15,7 +15,7 @@ implementation 'com.zrq:divider:1.0.0'
 ```
 导入app/libs/divider-1.0.0.jar  
 ```
-##调用：
+## 调用：
 ```java
 recyclerView.addItemDecoration(Divider.builder()
         .color(Color.BLUE)
@@ -23,7 +23,7 @@ recyclerView.addItemDecoration(Divider.builder()
         .height(20)
         .build());
 ```
-##介绍：
+## 介绍：
 ```java
 recyclerView.addItemDecoration(Divider.builder()
         .color(Color.BLUE)// 设颜色
@@ -42,14 +42,14 @@ divider.setHeaderCount(2);
 divider.setFooterCount(2);
 ```
 
-##注意事项：
-#####1.如果增删不是调用的 adapter.notifyDataSetChanged() 则需要调用下面方法重新绘制线
+## 注意事项：
+##### 1.如果增删不是调用的 adapter.notifyDataSetChanged() 则需要调用下面方法重新绘制线
 ```java
 recyclerView.invalidateItemDecorations();
 ```
 
 
-##联系我：
+## 联系我：
 
 QQ：273902141
 
