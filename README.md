@@ -4,7 +4,7 @@
 ## Demo
 [下载 APK-Demo](https://github.com/zrq1060/Divider/blob/master/res/app-debug.apk)
 ## 效果：
-[image](https://github.com/zrq1060/Divider/blob/master/res/0.png)
+![image](https://github.com/zrq1060/Divider/blob/master/res/0.png)
 
 ## 导入
 ### Android studio 
