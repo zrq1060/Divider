@@ -1,6 +1,7 @@
 package com.zrq.dividerdemo;
 
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         // 设置adapter
         adapter = new TestAdapter(R.layout.item_test, null);
         recyclerView.setAdapter(adapter);
-        divider = Divider.builder().color(Color.RED).width(5).height(5).headerCount(0).footerCount(0).build();
+        divider = Divider.builder().color(Color.BLUE).width(10).height(20).build();
         recyclerView.addItemDecoration(divider);
         // 设置manager
         switchLayoutManager(5);
