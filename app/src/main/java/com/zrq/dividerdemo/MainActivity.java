@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         divider = Divider.builder().color(Color.BLUE).width(10).height(20).build();
         recyclerView.addItemDecoration(divider);
         // 设置manager
-        switchLayoutManager(5);
+        switchLayoutManager(1);
         // 设置数据
         replaceData(10);
     }
@@ -200,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
      * 增数据
      */
     private void addData(int position) {
-        if (position <= adapter.getItemCount()) {
+        if (position <= adapter.getData().size()) {
             adapter.addData(position, "新增数据");
             redrawDivider();// 增删得重新的绘制线
         }
@@ -210,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
      * 删数据
      */
     private void removeData(int position) {
-        if (position < adapter.getItemCount()) {
+        if (position < adapter.getData().size()) {
             adapter.remove(position);
             redrawDivider();// 增删得重新的绘制线
         }

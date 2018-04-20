@@ -1,14 +1,15 @@
 # Divider
 ## RecyclerView通用分割线 
 # 使用说明：
-## Demo
+##Demo
 [下载 APK-Demo](https://github.com/zrq1060/Divider/blob/master/res/app-debug.apk)
 ##效果：
-![image](https://github.com/zrq1060/Divider/blob/master/res/demo.gif)
+[image](https://github.com/zrq1060/Divider/blob/master/res/0.png)
+
 ##导入
 ### Android studio 
 ```
-implementation 'com.zrq:divider:1.0.0'  
+implementation 'com.zrq:divider:1.0.0'
 ```
 ### Eclipse
 ```

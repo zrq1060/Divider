@@ -30,7 +30,7 @@ public class TestAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
     @Override
     protected void convert(BaseViewHolder holder, String item) {
         int position = holder.getAdapterPosition();
-        holder.itemView.setBackgroundColor(Color.GREEN);
+        holder.itemView.setBackgroundColor(Color.RED);
         // 设置Item宽高
         switch (layoutManagerState) {
             case 1:
