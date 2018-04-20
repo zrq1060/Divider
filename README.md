@@ -4,7 +4,7 @@
 ## Demo
 [下载 APK-Demo](https://github.com/zrq1060/Divider/blob/master/res/app-debug.apk)
 ## 效果：
-![](https://github.com/scwang90/SmartRefreshLayout/raw/master/art/gif_practive_repast.gif)
+![image](https://github.com/zrq1060/Divider/blob/master/res/a.png)
 
 ## 导入
 ### Android studio 
