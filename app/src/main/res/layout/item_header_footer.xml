@@ -10,6 +10,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="增加的头、尾"
-        android:textSize="30sp" />
+        android:textColor="#000"
+        android:textSize="50sp" />
 
 </RelativeLayout>

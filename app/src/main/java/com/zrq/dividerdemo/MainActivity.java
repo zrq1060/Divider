@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private View getHeaderViewOrFooterView() {
         View headerView = View.inflate(getApplicationContext(), R.layout.item_header_footer, null);
-        headerView.setBackgroundColor(new Random().nextInt());
+        headerView.setBackgroundColor(Color.GREEN);
         headerView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         return headerView;
     }
