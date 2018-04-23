@@ -5,7 +5,9 @@
 ## Demo
 [下载 APK-Demo](https://github.com/zrq1060/Divider/blob/master/res/app-debug.apk)
 ## 效果：
-![image](https://github.com/zrq1060/Divider/blob/master/res/0.gif)![image](https://github.com/zrq1060/Divider/blob/master/res/1.gif)
+|原始用法|增头增尾|
+|:---:|:---:|
+|![](https://github.com/zrq1060/Divider/blob/master/res/0.gif)|![](https://github.com/zrq1060/Divider/blob/master/res/1.gif)|
 
 ## 导入
 ### Android studio 
