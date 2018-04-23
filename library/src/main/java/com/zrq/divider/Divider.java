@@ -56,7 +56,6 @@ public class Divider extends RecyclerView.ItemDecoration {
 
     @Override
     public void onDraw(Canvas canvas, RecyclerView parent, RecyclerView.State state) {
-        RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
         drawHorizontal(canvas, parent, lineWidth, lineHeight);
         drawVertical(canvas, parent, lineWidth, lineHeight);
     }
@@ -167,26 +166,29 @@ public class Divider extends RecyclerView.ItemDecoration {
         for (int i = 0; i < childCount; i++) {
             final View child = parent.getChildAt(i);
             int currentPosition = parent.getChildAdapterPosition(child);
-            if (isSkipDraw(parent, child) || isNotDrawBottom(child, parent, currentPosition, spanCount, adapterCount))
-                // 跳过、不绘制底部，直接返回
+            if (isSkipDraw(parent, child))
+                // 跳过，直接返回
                 continue;
-            if (isNotDrawRight(child, parent, currentPosition, spanCount, adapterCount))
-                // 不绘制右部，公共区域不绘制
-                lineWidth = 0;
             final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
-            // 绘制下线
-            final int left = child.getLeft() - params.leftMargin;
-            final int downTop = child.getBottom() + params.bottomMargin;
-            final int right = child.getRight() + params.rightMargin + lineWidth;// 公共区域绘制
-            final int downBottom = downTop + lineHeight;
-            dividerDrawable.setBounds(left, downTop, right, downBottom);
-            dividerDrawable.draw(canvas);
+            if (!isNotDrawBottom(child, parent, currentPosition, spanCount, adapterCount)) {
+                // 绘制底部
+                int bottomLineWidth = isNotDrawRight(child, parent, currentPosition, spanCount, adapterCount) ? 0 : lineWidth;// 不绘制右部，公共区域不绘制
+                // 绘制下线
+                final int downLeft = child.getLeft() - params.leftMargin;
+                final int downTop = child.getBottom() + params.bottomMargin;
+                final int downRight = child.getRight() + params.rightMargin + bottomLineWidth;// 公共区域绘制
+                final int downBottom = downTop + lineHeight;
+                dividerDrawable.setBounds(downLeft, downTop, downRight, downBottom);
+                dividerDrawable.draw(canvas);
+            }
             // 判断是否绘制双线
-            if (isDrawDoubleLine && isStaggeredGridCenterView(child, spanCount)) {
+            if (isDrawDoubleLine && isStaggeredGridNotFirstView(child, spanCount)) {
                 // 绘制上线
+                final int upLeft = child.getLeft() - params.leftMargin;
                 final int upTop = child.getTop() + params.topMargin - lineHeight;
+                final int upRight = child.getRight() + params.rightMargin + lineWidth;// 公共区域绘制
                 final int upBottom = upTop + lineHeight;
-                dividerDrawable.setBounds(left, upTop, right, upBottom);
+                dividerDrawable.setBounds(upLeft, upTop, upRight, upBottom);
                 dividerDrawable.draw(canvas);
             }
         }
@@ -219,25 +221,30 @@ public class Divider extends RecyclerView.ItemDecoration {
         for (int i = 0; i < childCount; i++) {
             final View child = parent.getChildAt(i);
             int currentPosition = parent.getChildAdapterPosition(child);
-            if (isSkipDraw(parent, child) || isNotDrawRight(child, parent, currentPosition, spanCount, adapterCount))
+            if (isSkipDraw(parent, child))
                 // 跳过、不绘制右部，直接返回
                 continue;
-            if (isNotDrawBottom(child, parent, currentPosition, spanCount, adapterCount))
-                // 不绘制底部，公共区域不绘制
-                lineHeight = 0;
             final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
-            final int left = child.getRight() + params.rightMargin;
-            final int top = child.getTop() - params.topMargin;
-            final int right = left + lineWidth;
-            final int bottom = child.getBottom() + params.bottomMargin + lineHeight;// 公共区域水平绘制
-            dividerDrawable.setBounds(left, top, right, bottom);
-            dividerDrawable.draw(canvas);
+            if (!isNotDrawRight(child, parent, currentPosition, spanCount, adapterCount)) {
+                // 不绘制右边
+                if (isNotDrawBottom(child, parent, currentPosition, spanCount, adapterCount))
+                    // 不绘制底部，公共区域不绘制
+                    lineHeight = 0;
+                final int left = child.getRight() + params.rightMargin;
+                final int top = child.getTop() - params.topMargin;
+                final int right = left + lineWidth;
+                final int bottom = child.getBottom() + params.bottomMargin + lineHeight;// 公共区域水平绘制
+                dividerDrawable.setBounds(left, top, right, bottom);
+                dividerDrawable.draw(canvas);
+            }
             // 判断是否绘制双线
-            if (isDrawDoubleLine && isStaggeredGridCenterView(child, spanCount)) {
+            if (isDrawDoubleLine && isStaggeredGridNotFirstView(child, spanCount)) {
                 // 绘制左线
-                final int doubleLineLeft = child.getLeft() + params.leftMargin - lineWidth;
-                final int doubleLineRight = doubleLineLeft + lineWidth;
-                dividerDrawable.setBounds(doubleLineLeft, top, doubleLineRight, bottom);
+                final int left = child.getLeft() + params.leftMargin - lineWidth;
+                final int top = child.getTop() - params.topMargin;
+                final int right = left + lineWidth;
+                final int bottom = child.getBottom() + params.bottomMargin + lineHeight;// 公共区域水平绘制
+                dividerDrawable.setBounds(left, top, right, bottom);
                 dividerDrawable.draw(canvas);
             }
         }
@@ -250,9 +257,9 @@ public class Divider extends RecyclerView.ItemDecoration {
      * @param view      测定的view
      * @param spanCount 列数
      */
-    private boolean isStaggeredGridCenterView(View view, int spanCount) {
+    private boolean isStaggeredGridNotFirstView(View view, int spanCount) {
         StaggeredGridLayoutManager.LayoutParams lp = (StaggeredGridLayoutManager.LayoutParams) view.getLayoutParams();
-        return lp.getSpanIndex() != 0 && (lp.getSpanIndex() + 1) % spanCount != 0;
+        return lp.getSpanIndex() != 0;
     }
 
     /**

@@ -135,23 +135,23 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 3:
                 // GridLayoutManager VERTICAL
-                GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 3, LinearLayoutManager.VERTICAL, false);
+                GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 4, LinearLayoutManager.VERTICAL, false);
                 this.linearLayoutManager = gridLayoutManager;
                 setSpanSizeLookup(gridLayoutManager);// 设置头、尾，占用3列
                 break;
             case 4:
                 // GridLayoutManager HORIZONTAL
-                GridLayoutManager gridLayoutManagerHorizontal = new GridLayoutManager(getApplicationContext(), 3, LinearLayoutManager.HORIZONTAL, false);
+                GridLayoutManager gridLayoutManagerHorizontal = new GridLayoutManager(getApplicationContext(), 4, LinearLayoutManager.HORIZONTAL, false);
                 this.linearLayoutManager = gridLayoutManagerHorizontal;
                 setSpanSizeLookup(gridLayoutManagerHorizontal);// 设置头、尾，占用3列
                 break;
             case 5:
                 // StaggeredGridLayoutManager VERTICAL
-                this.linearLayoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
+                this.linearLayoutManager = new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL);
                 break;
             case 6:
                 // StaggeredGridLayoutManager HORIZONTAL
-                this.linearLayoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.HORIZONTAL);
+                this.linearLayoutManager = new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.HORIZONTAL);
                 break;
         }
         recyclerView.setLayoutManager(linearLayoutManager);

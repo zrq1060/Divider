@@ -2,11 +2,7 @@ package com.zrq.dividerdemo;
 
 import android.graphics.Color;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -51,11 +47,11 @@ public class TestAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
                 break;
             case 5:
                 // StaggeredGridLayoutManager VERTICAL
-                holder.itemView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, position % 2 == 0 ? 200 : 500));
+                holder.itemView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, position % 2 == 0 ? 200 : 700));
                 break;
             case 6:
                 // StaggeredGridLayoutManager HORIZONTAL
-                holder.itemView.setLayoutParams(new ViewGroup.LayoutParams(position % 2 == 0 ? 200 : 500, ViewGroup.LayoutParams.MATCH_PARENT));
+                holder.itemView.setLayoutParams(new ViewGroup.LayoutParams(position % 2 == 0 ? 200 : 700, ViewGroup.LayoutParams.MATCH_PARENT));
                 break;
         }
         // 设置数据

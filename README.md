@@ -1,5 +1,6 @@
 # Divider
-## RecyclerView通用分割线 
+## RecyclerView通用分割线，ItemDecoration for Recyclerview 
+##### 适配了LinearLayoutManager、GridLayoutManager、StaggeredGridLayoutManager
 # 使用说明：
 ## Demo
 [下载 APK-Demo](https://github.com/zrq1060/Divider/blob/master/res/app-debug.apk)
