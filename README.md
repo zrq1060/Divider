@@ -12,11 +12,11 @@
 ## 导入
 ### Android studio 
 ```
-implementation 'com.zrq:divider:1.0.0'
+implementation 'com.zrq:divider:1.0.1'
 ```
 ### Eclipse
 ```
-导入app/libs/divider-1.0.0.jar  
+导入app/libs/divider-1.0.1.jar
 ```
 ## 调用：
 ```java
