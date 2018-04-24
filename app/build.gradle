@@ -36,6 +36,6 @@ dependencies {
 
     // 依赖库
     implementation project(':library')
-//    implementation 'com.zrq:divider:1.0.0'
+//    implementation 'com.zrq:divider:1.0.1'
 
 }
