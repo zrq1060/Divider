@@ -38,7 +38,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="删数量" />
-
+        <Button
+            android:id="@+id/btn_not_draw"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="不绘制" />
         <Button
             android:id="@+id/btn_header_add"
             android:layout_width="0dp"
@@ -119,5 +124,6 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:background="#0f0" />
 </LinearLayout>

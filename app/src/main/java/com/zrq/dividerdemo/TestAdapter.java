@@ -27,15 +27,16 @@ public class TestAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
     protected void convert(BaseViewHolder holder, String item) {
         int position = holder.getAdapterPosition();
         holder.itemView.setBackgroundColor(Color.RED);
+        holder.itemView.setAlpha(0.4f);
         // 设置Item宽高
         switch (layoutManagerState) {
             case 1:
                 // LinearLayoutManager VERTICAL
-                holder.itemView.setLayoutParams(new ViewGroup.LayoutParams(400, 200));
+                holder.itemView.setLayoutParams(new ViewGroup.LayoutParams(400, 400));
                 break;
             case 2:
                 // LinearLayoutManager HORIZONTAL
-                holder.itemView.setLayoutParams(new ViewGroup.LayoutParams(400, 200));
+                holder.itemView.setLayoutParams(new ViewGroup.LayoutParams(400, 400));
                 break;
             case 3:
                 // GridLayoutManager VERTICAL

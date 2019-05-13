@@ -1,8 +1,8 @@
 package com.zrq.dividerdemo;
 
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,7 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
-import com.zrq.divider.Divider;
+import com.zrq.divider.GridDivider;
+import com.zrq.divider.LinearDivider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager linearLayoutManager;
     private List<View> headerViews = new ArrayList<>();
     private List<View> footerViews = new ArrayList<>();
-    private Divider divider;
+    private GridDivider divider;
     private int num;
 
     @Override
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         // 设置adapter
         adapter = new TestAdapter(R.layout.item_test, null);
         recyclerView.setAdapter(adapter);
-        divider = Divider.builder().color(Color.BLUE).width(10).height(20).build();
+        divider = GridDivider.builder().color(Color.BLUE).width(1).height(1).build();
         recyclerView.addItemDecoration(divider);
         // 设置manager
         switchLayoutManager(1);
@@ -75,6 +76,11 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_add_num).setOnClickListener(v -> addData(num));
         // 删除内容数量
         findViewById(R.id.btn_remove_num).setOnClickListener(v -> removeData(num));
+        // 不绘制
+        findViewById(R.id.btn_not_draw).setOnClickListener(v -> {
+            divider.setNotDraw(true);
+            redrawDivider();// 增删得重新的绘制线
+        });
         // 增加头
         findViewById(R.id.btn_header_add).setOnClickListener(v -> {
             View headerView = getHeaderViewOrFooterView();
@@ -133,13 +139,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 3:
                 // GridLayoutManager VERTICAL
-                GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 4, LinearLayoutManager.VERTICAL, false);
+                GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2, LinearLayoutManager.VERTICAL, false);
                 this.linearLayoutManager = gridLayoutManager;
                 setSpanSizeLookup(gridLayoutManager);// 设置头、尾，占用3列
                 break;
             case 4:
                 // GridLayoutManager HORIZONTAL
-                GridLayoutManager gridLayoutManagerHorizontal = new GridLayoutManager(getApplicationContext(), 4, LinearLayoutManager.HORIZONTAL, false);
+                GridLayoutManager gridLayoutManagerHorizontal = new GridLayoutManager(getApplicationContext(), 2, LinearLayoutManager.HORIZONTAL, false);
                 this.linearLayoutManager = gridLayoutManagerHorizontal;
                 setSpanSizeLookup(gridLayoutManagerHorizontal);// 设置头、尾，占用3列
                 break;
@@ -178,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private View getHeaderViewOrFooterView() {
         View headerView = View.inflate(getApplicationContext(), R.layout.item_header_footer, null);
-        headerView.setBackgroundColor(Color.GREEN);
+        headerView.setBackgroundColor(Color.YELLOW);
         headerView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         return headerView;
     }
@@ -192,6 +198,7 @@ public class MainActivity extends AppCompatActivity {
             items.add("原始数据" + i);
         }
         adapter.replaceData(items);
+        redrawDivider();// 增删得重新的绘制线
     }
 
     /**
